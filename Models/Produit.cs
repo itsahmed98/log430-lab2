@@ -1,4 +1,4 @@
-namespace Models;
+namespace MagasinMVC.Models;
 
 public class Produit
 {

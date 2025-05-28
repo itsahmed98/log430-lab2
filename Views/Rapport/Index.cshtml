@@ -1,0 +1,28 @@
+@using MagasinMVC.Models.ViewModels
+@model RapportViewModel
+
+<h2>Rapport Consolidé</h2>
+
+<h3>Ventes par magasin</h3>
+<ul>
+    @foreach (var item in Model.VentesParMagasin)
+    {
+        <li>@item.Magasin : @item.TotalVentes $</li>
+    }
+</ul>
+
+<h3>Produits les plus vendus</h3>
+<ul>
+    @foreach (var item in Model.ProduitsLesPlusVendus)
+    {
+        <li>@item.Produit : @item.QuantiteVendue unités</li>
+    }
+</ul>
+
+<h3>Stock actuel</h3>
+<ul>
+    @foreach (var item in Model.Stocks)
+    {
+        <li>@item.Produit : @item.Stock unités</li>
+    }
+</ul>

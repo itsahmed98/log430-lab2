@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Models;
+using MagasinMVC.Models;
 
 namespace MagasinMVC.Controllers;
 
@@ -29,6 +29,7 @@ public class ProduitController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult CreateProduct(Produit produit)
     {
+        Console.WriteLine($"Produit reçu : {produit.Nom}");
         if (ModelState.IsValid)
         {
             _context.Produits.Add(produit);
