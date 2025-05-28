@@ -1,9 +1,13 @@
 using Microsoft.EntityFrameworkCore;
+using MagasinMVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<RapportService>();
+//builder.Services.AddScoped<ProduitService>();
+
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<MagasinContext>(options =>
