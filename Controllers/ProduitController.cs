@@ -1,16 +1,18 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using MagasinMVC.Models;
+using Models;
 
 namespace MagasinMVC.Controllers;
 
 public class ProduitController : Controller
 {
+    private readonly MagasinContext _context;
     private readonly ILogger<ProduitController> _logger;
 
-    public ProduitController(ILogger<ProduitController> logger)
+    public ProduitController(ILogger<ProduitController> logger, MagasinContext context)
     {
         _logger = logger;
+        _context = context;
     }
 
     public IActionResult Index()
@@ -18,9 +20,21 @@ public class ProduitController : Controller
         return View();
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    public IActionResult CreateProduct()
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult CreateProduct(Produit produit)
+    {
+        if (ModelState.IsValid)
+        {
+            _context.Produits.Add(produit);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        return View(produit);
     }
 }
