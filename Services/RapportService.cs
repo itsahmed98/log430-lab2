@@ -47,4 +47,23 @@ public class RapportService
             }).ToList();
     }
 
+    public IEnumerable<PerformanceMagasin> ObtenirPerformancesMagasins()
+    {
+        return _context.Magasins
+            .Select(m => new PerformanceMagasin
+            {
+                Magasin = m.Nom,
+                NombreDeVentes = _context.Ventes.Count(v => v.MagasinId == m.Id),
+                TotalMontantVentes = _context.Ventes
+                    .Where(v => v.MagasinId == m.Id)
+                    .Sum(v => v.Total),
+
+                ProduitLePlusVendu = _context.LignesVente
+                    .Where(l => l.Vente.MagasinId == m.Id)
+                    .GroupBy(l => l.Produit.Nom)
+                    .OrderByDescending(g => g.Sum(l => l.Quantite))
+                    .Select(g => g.Key)
+                    .FirstOrDefault()
+            }).ToList();
+    }
 }

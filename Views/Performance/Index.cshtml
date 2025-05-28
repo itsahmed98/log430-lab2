@@ -1,0 +1,25 @@
+@model IEnumerable<MagasinMVC.Models.ViewModels.PerformanceMagasin>
+
+<h2>Tableau de bord - Performances des magasins</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Magasin</th>
+            <th>Nombre de ventes</th>
+            <th>Total ($)</th>
+            <th>Produit le plus vendu</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var perf in Model)
+        {
+            <tr>
+                <td>@perf.Magasin</td>
+                <td>@perf.NombreDeVentes</td>
+                <td>@perf.TotalMontantVentes</td>
+                <td>@perf.ProduitLePlusVendu</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -7,4 +7,7 @@ public class Vente
     public decimal Total { get; set; }
 
     public List<LigneVente> Lignes { get; set; } = new();
+
+    public int MagasinId { get; set; }
+    public Magasin Magasin { get; set; }
 }
