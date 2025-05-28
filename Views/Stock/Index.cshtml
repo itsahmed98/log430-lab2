@@ -1,0 +1,28 @@
+@model IEnumerable<MagasinMVC.Models.Produit>
+
+<h2>Stock central</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Quantité en stock</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produit in Model)
+        {
+            <tr>
+                <td>@produit.Nom</td>
+                <td>@produit.QuantiteStock</td>
+                <td>
+                    <form asp-action="Reapprovisionner" asp-controller="Stock" method="post">
+                        <input type="hidden" name="id" value="@produit.Id" />
+                        <button type="submit" class="btn btn-primary">Réapprovisionner (+20)</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
