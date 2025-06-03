@@ -22,34 +22,39 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Produit"
-                                asp-action="Index">Produits</a>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="produitsDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Produits
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="produitsDropdown">
+                                <li><a class="dropdown-item" asp-controller="Produit" asp-action="CreateProduct">Créer
+                                        un produit</a></li>
+                                <li><a class="dropdown-item" asp-controller="Stock" asp-action="Index">Stock central</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="nav-item"></li>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Produit"
-                            asp-action="CreateProduct">Créer un
-                            produit</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Rapport"
-                                asp-action="Index">Rapport</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Stock" asp-action="Index">Stock central</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Performance"
-                                asp-action="Index">Performance</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Vente" asp-action="Create">Créer une vente</a>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="ventesDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Ventes
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="ventesDropdown">
+                                <li><a class="dropdown-item" asp-controller="Vente" asp-action="Create">Créer une
+                                        vente</a></li>
+                                <li><a class="dropdown-item" asp-controller="Rapport" asp-action="Index">Rapport</a>
+                                </li>
+                                <li><a class="dropdown-item" asp-controller="Performance"
+                                        asp-action="Index">Performance</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

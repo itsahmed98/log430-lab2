@@ -1,5 +1,8 @@
 namespace MagasinMVC.Models;
 
+/// <summary>
+/// Represente une ligne de vente dans le système de gestion de magasin.
+/// </summary>
 public class LigneVente
 {
     public int Id { get; set; }

@@ -2,21 +2,27 @@ using Microsoft.AspNetCore.Mvc;
 using MagasinMVC.Services;
 using MagasinMVC.Models.ViewModels;
 
-namespace MagasinMVC.Controllers
+namespace MagasinMVC.Controllers;
+
+/// <summary>
+/// Contrôleur pour le tableau de bord des performances des magasins.
+/// Affiche les indicateurs de vente par magasin.
+/// </summary>
+public class PerformanceController : Controller
 {
-    public class PerformanceController : Controller
+    private readonly RapportService _rapportService;
+
+    public PerformanceController(RapportService rapportService)
     {
-        private readonly RapportService _rapportService;
+        _rapportService = rapportService;
+    }
 
-        public PerformanceController(RapportService rapportService)
-        {
-            _rapportService = rapportService;
-        }
-
-        public IActionResult Index()
-        {
-            var performances = _rapportService.ObtenirPerformancesMagasins();
-            return View(performances);
-        }
+    /// <summary>
+    /// Affiche la vue des performances des magasins.
+    /// </summary>
+    public IActionResult Index()
+    {
+        var performances = _rapportService.ObtenirPerformancesMagasins();
+        return View(performances);
     }
 }

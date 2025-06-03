@@ -6,6 +6,10 @@ using MagasinMVC.Models.ViewModels;
 
 namespace MagasinMVC.Controllers;
 
+/// <summary>
+/// Contrôleur pour la génération du rapport consolidé.
+/// Affiche les ventes par magasin, les produits les plus vendus et le stock actuel.
+/// </summary>
 public class RapportController : Controller
 {
     private readonly RapportService _rapportService;
@@ -15,6 +19,9 @@ public class RapportController : Controller
         _rapportService = rapportService;
     }
 
+    /// <summary>
+    /// Affiche la vue du rapport consolidé.
+    /// </summary>
     public IActionResult Index()
     {
         var ventes = _rapportService.ObtenirVentesParMagasin();

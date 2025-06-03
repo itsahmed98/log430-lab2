@@ -4,6 +4,10 @@ using MagasinMVC.Models;
 
 namespace MagasinMVC.Controllers;
 
+/// <summary>
+/// Contrôleur pour la gestion des produits.
+/// Permet la création et la consultation des produits.
+/// </summary>
 public class ProduitController : Controller
 {
     private readonly MagasinContext _context;
@@ -15,16 +19,25 @@ public class ProduitController : Controller
         _context = context;
     }
 
+    /// <summary>
+    /// Affiche la page principale des produits.
+    /// </summary>
     public IActionResult Index()
     {
         return View();
     }
 
+    /// <summary>
+    /// Affiche le formulaire de création de produit.
+    /// </summary>
     public IActionResult CreateProduct()
     {
         return View();
     }
 
+    /// <summary>
+    /// Traite la soumission du formulaire de création d'un nouveau produit.
+    /// </summary>
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult CreateProduct(Produit produit)

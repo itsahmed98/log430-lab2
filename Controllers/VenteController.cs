@@ -5,6 +5,10 @@ using MagasinMVC.Models.ViewModels;
 
 namespace MagasinMVC.Controllers;
 
+/// <summary>
+/// Contrôleur pour la gestion des ventes.
+/// Permet de créer une vente liée à un produit et un magasin.
+/// </summary>
 public class VenteController : Controller
 {
     private readonly MagasinContext _context;
@@ -14,6 +18,9 @@ public class VenteController : Controller
         _context = context;
     }
 
+    /// <summary>
+    /// Affiche le formulaire de création d'une vente.
+    /// </summary>
     public IActionResult Create()
     {
         var model = new CreerVenteViewModel
@@ -28,6 +35,9 @@ public class VenteController : Controller
         return View(model);
     }
 
+    /// <summary>
+    /// Traite la soumission du formulaire de vente.
+    /// </summary>
     [HttpPost]
     public IActionResult Create(CreerVenteViewModel model)
     {
