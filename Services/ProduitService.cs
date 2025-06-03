@@ -30,7 +30,11 @@ public class ProduitService
         return _context.Produits.ToList();
     }
 
-
+    /// <summary>
+    /// Réapprovisionner un produit spécifique dans le stock du magasin.
+    /// </summary>
+    /// <param name="idProduit">L'identification du produit</param>
+    /// <param name="quantite">La quantité à réapprovisionner (20 par défaut)</param>
     public void Reapprovisionner(int idProduit, int quantite)
     {
         var produit = _context.Produits.FirstOrDefault(p => p.Id == idProduit);

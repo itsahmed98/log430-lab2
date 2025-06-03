@@ -2,15 +2,29 @@ using MagasinMVC.Models.ViewModels;
 
 namespace MagasinMVC.Services;
 
+/// <summary>
+/// Service pour générer des rapports sur les ventes et les performances des magasins.
+/// </summary>
 public class RapportService
 {
+    /// <summary>
+    /// Contexte de la base de données pour accéder aux données des magasins, ventes et produits.
+    /// </summary>
     private readonly MagasinContext _context;
 
+    /// <summary>
+    /// Constructeur du service RapportService.
+    /// </summary>
+    /// <param name="context">Contexte de la base de données</param>
     public RapportService(MagasinContext context)
     {
         _context = context;
     }
 
+    /// <summary>
+    /// Obtenir les ventes totales par magasin.
+    /// </summary>
+    /// <returns>Une liste des ventes totales</returns>
     public IEnumerable<VenteParMagasin> ObtenirVentesParMagasin()
     {
         return _context.Magasins
@@ -23,6 +37,10 @@ public class RapportService
             }).ToList();
     }
 
+    /// <summary>
+    /// Obtenir les produits les plus vendus.
+    /// </summary>
+    /// <returns>Une liste des produits les plus vendus</returns>
     public IEnumerable<ProduitVendu> ObtenirProduitsLesPlusVendus()
     {
         return _context.LignesVente
@@ -37,6 +55,10 @@ public class RapportService
             .ToList();
     }
 
+    /// <summary>
+    /// Obtenir le stock de chaque produit dans le magasin.
+    /// </summary>
+    /// <returns>Une liste du stock</returns>
     public IEnumerable<StockProduit> ObtenirStockParProduit()
     {
         return _context.Produits
@@ -47,6 +69,9 @@ public class RapportService
             }).ToList();
     }
 
+    /// <summary>
+    /// Obtenir les performances des magasins.
+    /// </summary>
     public IEnumerable<PerformanceMagasin> ObtenirPerformancesMagasins()
     {
         return _context.Magasins
