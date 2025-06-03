@@ -56,6 +56,21 @@
                                         asp-action="Index">Performance</a></li>
                             </ul>
                         </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="magasinsDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Magasins
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="magasinsDropdown">
+                                <li><a class="dropdown-item" asp-controller="Magasin" asp-action="Index">Magasins</a>
+                                </li>
+                                <li><a class="dropdown-item" asp-controller="Magasin" asp-action="Create">Créer</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    </li>
                     </ul>
                 </div>
             </div>

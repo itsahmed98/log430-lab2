@@ -48,7 +48,7 @@ public class VenteController : Controller
 
         var vente = new Vente
         {
-            DateVente = DateTime.Now,
+            DateVente = DateTime.UtcNow,
             Total = montant,
             MagasinId = model.MagasinId,
             Lignes = new List<LigneVente>

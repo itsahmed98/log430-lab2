@@ -1,0 +1,23 @@
+@model IEnumerable<MagasinMVC.Models.Magasin>
+
+<h2>Liste des magasins</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Quartier</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Nom</td>
+                <td>@m.Quartier</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-action="Create">Ajouter un magasin</a>
