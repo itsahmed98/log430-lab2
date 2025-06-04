@@ -17,4 +17,4 @@ WORKDIR /app
 COPY --from=build /app/publish .
 
 EXPOSE 80
-ENTRYPOINT ["dotnet", "magasincentral.dll"]
+ENTRYPOINT ["dotnet", "magasincentral.dll", "--urls", "http://0.0.0.0:80"]
