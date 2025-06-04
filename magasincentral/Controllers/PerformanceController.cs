@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using MagasinMVC.Services;
-using MagasinMVC.Models.ViewModels;
+using magasincentral.Services;
+using magasincentral.Models.ViewModels;
 
-namespace MagasinMVC.Controllers;
+namespace magasincentral.Controllers;
 
 /// <summary>
 /// Contrôleur pour le tableau de bord des performances des magasins.

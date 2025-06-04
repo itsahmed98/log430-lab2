@@ -1,4 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using magasincentral.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<MagasinContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<ProduitService>();
+builder.Services.AddScoped<RapportService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

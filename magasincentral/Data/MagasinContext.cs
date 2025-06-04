@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using MagasinMVC.Models;
+using magasincentral.Models;
 
 public class MagasinContext : DbContext
 {

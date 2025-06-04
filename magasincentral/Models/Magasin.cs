@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace MagasinMVC.Models;
+namespace magasincentral.Models;
 
 /// <summary>
 /// Représente un magasin dans le système.

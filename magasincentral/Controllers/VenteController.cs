@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using MagasinMVC.Models;
-using MagasinMVC.Models.ViewModels;
+using magasincentral.Models;
+using magasincentral.Models.ViewModels;
 
-namespace MagasinMVC.Controllers;
+namespace magasincentral.Controllers;
 
 /// <summary>
 /// Contrôleur pour la gestion des ventes.

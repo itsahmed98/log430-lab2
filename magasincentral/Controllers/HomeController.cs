@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using MagasinMVC.Models;
+using magasincentral.Models;
 
-namespace MagasinMVC.Controllers;
+namespace magasincentral.Controllers;
 
 /// <summary>
 /// Contrôleur principal de l'application.

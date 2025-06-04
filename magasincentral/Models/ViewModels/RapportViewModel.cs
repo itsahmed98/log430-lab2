@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MagasinMVC.Models.ViewModels;
+namespace magasincentral.Models.ViewModels;
 
 public class RapportViewModel
 {

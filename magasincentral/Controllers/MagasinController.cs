@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using MagasinMVC.Models;
+using magasincentral.Models;
 
-namespace MagasinMVC.Controllers;
+namespace magasincentral.Controllers;
 
 /// <summary>
 /// Contrôleur responsable de la gestion des magasins.

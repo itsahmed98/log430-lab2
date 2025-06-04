@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using MagasinMVC.Services;
+using magasincentral.Services;
 
-namespace MagasinMVC.Controllers;
+namespace magasincentral.Controllers;
 
 /// <summary>
 /// Contrôleur pour la gestion du stock des produits.

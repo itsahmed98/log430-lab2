@@ -1,10 +1,10 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using MagasinMVC.Models;
-using MagasinMVC.Services;
-using MagasinMVC.Models.ViewModels;
+using magasincentral.Models;
+using magasincentral.Services;
+using magasincentral.Models.ViewModels;
 
-namespace MagasinMVC.Controllers;
+namespace magasincentral.Controllers;
 
 /// <summary>
 /// Contrôleur pour la génération du rapport consolidé.

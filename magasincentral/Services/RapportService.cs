@@ -1,6 +1,6 @@
-using MagasinMVC.Models.ViewModels;
+using magasincentral.Models.ViewModels;
 
-namespace MagasinMVC.Services;
+namespace magasincentral.Services;
 
 /// <summary>
 /// Service pour générer des rapports sur les ventes et les performances des magasins.

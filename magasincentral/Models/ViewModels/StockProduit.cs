@@ -1,4 +1,4 @@
-namespace MagasinMVC.Models.ViewModels;
+namespace magasincentral.Models.ViewModels;
 
 public class StockProduit
 {

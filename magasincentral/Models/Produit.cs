@@ -1,4 +1,4 @@
-namespace MagasinMVC.Models;
+namespace magasincentral.Models;
 
 /// <summary>
 /// Représente un modèle du produit dans le système de gestion de magasin.

@@ -1,4 +1,4 @@
-namespace MagasinMVC.Models;
+namespace magasincentral.Models;
 
 /// <summary>
 /// Représente un modèle de vue pour les erreurs dans l'application.

@@ -1,6 +1,6 @@
-using MagasinMVC.Models;
+using magasincentral.Models;
 
-namespace MagasinMVC.Services;
+namespace magasincentral.Services;
 
 /// <summary>
 /// Service pour gérer les opérations liées aux produits dans le système de gestion de magasin.
