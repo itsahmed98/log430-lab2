@@ -1,19 +1,20 @@
 # Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+WORKDIR /src
 
 # Copy csproj and restore
-COPY *.csproj ./
-RUN dotnet restore
+COPY magasincentral/magasincentral.csproj ./magasincentral/
+RUN dotnet restore ./magasincentral/magasincentral.csproj
 
-# Copy the rest and build
+# Copy all and publish
 COPY . ./
-RUN dotnet publish -c Release -o /out
+WORKDIR /src/magasincentral
+RUN dotnet publish -c Release -o /app/publish
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /out ./
+COPY --from=build /app/publish .
 
 EXPOSE 80
-ENTRYPOINT ["dotnet", "MagasinMVC.dll"]
+ENTRYPOINT ["dotnet", "magasincentral.dll"]

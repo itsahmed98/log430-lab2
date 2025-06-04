@@ -1,20 +1,22 @@
 version: '3.8'
 
 services:
-  web:
-    build: .
-    container_name: log430-lab2-client
+  magasin-app:
+    build:
+      context: .
+      dockerfile: magasincentral/Dockerfile
+    container_name: log430-magasin-app
     ports:
       - "8080:80"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - DB_CONNECTION=Host=db;Port=5432;Username=postgres;Password=postgres;Database=magasin
+      - DB_CONNECTION=Host=magasin-db;Port=5432;Username=postgres;Password=postgres;Database=magasin
     depends_on:
-      - db
+      - magasin-db
 
-  db:
-    image: postgres
-    container_name: log430-lab2-db
+  magasin-db:
+    image: postgres:16
+    container_name: log430-magasin-db
     restart: always
     environment:
       POSTGRES_USER: postgres
