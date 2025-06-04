@@ -15,7 +15,7 @@ public class ProduitServiceTests
     public void ObtenirTousLesProduits_ShouldReturnProduits()
     {
         // Arrange
-        var context = DbContextFactory.Create(nameof(ObtenirTousLesProduits_WhenCalled_ShouldReturnAllProduits));
+        var context = DbContextFactory.Create(nameof(ObtenirTousLesProduits_ShouldReturnProduits));
         context.Produits.AddRange(
             new Produit { Nom = "Crayon", Prix = 1.2m, Categorie = "Papeterie", QuantiteStock = 10 },
             new Produit { Nom = "Stylo", Prix = 2.5m, Categorie = "Papeterie", QuantiteStock = 15 }
@@ -35,7 +35,7 @@ public class ProduitServiceTests
     public void Reapprovisionner_WithProductIdAndQuantity_ShouldIncreaseStock()
     {
         // Arrange
-        var context = DbContextFactory.Create(nameof(Reapprovisionner_WithValidProduit_ShouldIncreaseStock));
+        var context = DbContextFactory.Create(nameof(Reapprovisionner_WithProductIdAndQuantity_ShouldIncreaseStock));
         var produit = new Produit
         {
             Nom = "Carnet",

@@ -15,7 +15,7 @@ public class RapportServiceTests
     public void ObtenirVentesParMagasin_ShouldReturnTotal()
     {
         // Arrange
-        var context = DbContextFactory.Create(nameof(ObtenirVentesParMagasin_WithValidData_ShouldReturnCorrectTotals));
+        var context = DbContextFactory.Create(nameof(ObtenirVentesParMagasin_ShouldReturnTotal));
         var magasin = new Magasin { Id = 1, Nom = "ÉTS", Quartier = "Griffintown" };
         context.Magasins.Add(magasin);
         context.SaveChanges();
@@ -35,10 +35,10 @@ public class RapportServiceTests
     }
 
     [Fact]
-    public void ObtenirProduitsLesPlusVendus_WhenCalled_ShouldReturnTopFive()
+    public void ObtenirProduitsLesPlusVendus_ShouldReturnTopFive()
     {
         // Arrange
-        var context = DbContextFactory.Create(nameof(ObtenirProduitsLesPlusVendus_WhenCalled_ShouldReturnTopFive));
+        var context = DbContextFactory.Create(nameof(ObtenirProduitsLesPlusVendus_ShouldReturnTopFive));
         var produit = new Produit
         {
             Nom = "Cahier",
@@ -72,10 +72,10 @@ public class RapportServiceTests
     }
 
     [Fact]
-    public void ObtenirStockParProduit_WhenCalled_ShouldReturnStockList()
+    public void ObtenirStockParProduit_ShouldReturnStockList()
     {
         // Arrange
-        var context = DbContextFactory.Create(nameof(ObtenirStockParProduit_WhenCalled_ShouldReturnStockList));
+        var context = DbContextFactory.Create(nameof(ObtenirStockParProduit_ShouldReturnStockList));
         context.Produits.Add(new Produit
         {
             Nom = "Marqueur",
