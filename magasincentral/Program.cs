@@ -1,10 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using magasincentral.Services;
+using magasincentral.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<MagasinContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+        ?? Environment.GetEnvironmentVariable("DB_CONNECTION")
+        ?? "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=magasin";
+
+    options.UseNpgsql(connectionString);
+});
 
 builder.Services.AddScoped<ProduitService>();
 builder.Services.AddScoped<RapportService>();
@@ -13,6 +20,13 @@ builder.Services.AddScoped<RapportService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<MagasinContext>();
+    dbContext.Database.Migrate();
+    DataSeeder.Seed(dbContext);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

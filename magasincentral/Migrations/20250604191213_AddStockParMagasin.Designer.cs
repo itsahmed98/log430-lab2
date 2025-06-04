@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace magasincentral.Migrations
 {
     [DbContext(typeof(MagasinContext))]
-    partial class MagasinContextModelSnapshot : ModelSnapshot
+    [Migration("20250604191213_AddStockParMagasin")]
+    partial class AddStockParMagasin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,10 +86,6 @@ namespace magasincentral.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Nom")
                         .IsRequired()
                         .HasColumnType("text");
@@ -100,6 +99,32 @@ namespace magasincentral.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Produits");
+                });
+
+            modelBuilder.Entity("magasincentral.Models.StockMagasin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("MagasinId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ProduitId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Quantite")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MagasinId");
+
+                    b.HasIndex("ProduitId");
+
+                    b.ToTable("StocksMagasin");
                 });
 
             modelBuilder.Entity("magasincentral.Models.Vente", b =>
@@ -143,6 +168,25 @@ namespace magasincentral.Migrations
                     b.Navigation("Produit");
 
                     b.Navigation("Vente");
+                });
+
+            modelBuilder.Entity("magasincentral.Models.StockMagasin", b =>
+                {
+                    b.HasOne("magasincentral.Models.Magasin", "Magasin")
+                        .WithMany()
+                        .HasForeignKey("MagasinId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("magasincentral.Models.Produit", "Produit")
+                        .WithMany()
+                        .HasForeignKey("ProduitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Magasin");
+
+                    b.Navigation("Produit");
                 });
 
             modelBuilder.Entity("magasincentral.Models.Vente", b =>

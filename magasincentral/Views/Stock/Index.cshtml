@@ -17,6 +17,9 @@
                 <td>@produit.Nom</td>
                 <td>@produit.QuantiteStock</td>
                 <td>
+                    <a asp-action="Edit" asp-controller="Produit" asp-route-id="@produit.Id" class="btn btn-sm btn-warning">Modifier</a>
+                </td>
+                <td>
                     <form asp-action="Reapprovisionner" asp-controller="Stock" method="post">
                         <input type="hidden" name="id" value="@produit.Id" />
                         <button type="submit" class="btn btn-primary">Réapprovisionner (+20)</button>

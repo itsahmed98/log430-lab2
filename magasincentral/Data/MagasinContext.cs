@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using magasincentral.Models;
 
+/// <summary>
+/// Contexte de la base de données pour l'application Magasin Central.
+/// </summary>
 public class MagasinContext : DbContext
 {
     public MagasinContext(DbContextOptions<MagasinContext> options) : base(options) { }

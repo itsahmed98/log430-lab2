@@ -1,0 +1,29 @@
+@model magasincentral.Models.Produit
+
+<h2>Modifier le produit</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    
+    <div class="form-group">
+        <label asp-for="Nom"></label>
+        <input asp-for="Nom" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Categorie"></label>
+        <input asp-for="Categorie" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Prix"></label>
+        <input asp-for="Prix" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+</form>

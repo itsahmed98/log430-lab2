@@ -51,4 +51,43 @@ public class ProduitController : Controller
         }
         return View(produit);
     }
+
+
+    /// <summary>
+    /// Retourner la page de modification pour un produit.
+    /// </summary>
+    public IActionResult Edit(int id)
+    {
+        var produit = _context.Produits.Find(id);
+        if (produit == null)
+        {
+            return NotFound();
+        }
+        return View(produit);
+    }
+
+
+    /// <summary>
+    /// Traite la soumission du formulaire de modification d'un produit.
+    /// </summary>
+    [HttpPost]
+    public IActionResult Edit(Produit produit)
+    {
+        if (!ModelState.IsValid)
+            return View(produit);
+
+        var produitExistant = _context.Produits.Find(produit.Id);
+        if (produitExistant == null)
+            return NotFound();
+
+        produitExistant.Nom = produit.Nom;
+        produitExistant.Categorie = produit.Categorie;
+        produitExistant.Prix = produit.Prix;
+        produitExistant.Description = produit.Description;
+
+        _context.SaveChanges();
+
+        return RedirectToAction("Index", "Stock");
+    }
+
 }
