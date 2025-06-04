@@ -47,7 +47,7 @@ jobs:
         run: dotnet format --verify-no-changes
 
       - name: Run tests
-        run: dotnet test magasincentral.Test/magasincentral.Test.csproj --no-build --verbosity normal
+        run: dotnet test magasincentral.Test/magasincentral.Test.csproj
 
   docker-build:
     runs-on: ubuntu-latest
