@@ -44,6 +44,12 @@ public class VenteController : Controller
         var produit = _context.Produits.FirstOrDefault(p => p.Id == model.ProduitId);
         if (produit == null) return RedirectToAction("Create");
 
+        if (produit == null || model.Quantite > produit.QuantiteStock)
+        {
+            ModelState.AddModelError("", "Produit invalide ou quantité insuffisante");
+            return RedirectToAction("Create");
+        }
+
         var montant = produit.Prix * model.Quantite;
 
         var vente = new Vente
@@ -60,6 +66,8 @@ public class VenteController : Controller
                 }
             }
         };
+
+        produit.QuantiteStock -= model.Quantite;
 
         _context.Ventes.Add(vente);
         _context.SaveChanges();
