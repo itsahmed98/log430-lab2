@@ -32,7 +32,7 @@ public class RapportService
             {
                 Magasin = m.Nom,
                 TotalVentes = _context.Ventes
-                    .Where(v => v.Id == m.Id)
+                    .Where(v => v.MagasinId == m.Id)
                     .Sum(v => v.Total)
             }).ToList();
     }

@@ -20,8 +20,8 @@ public class RapportServiceTests
         context.Magasins.Add(magasin);
         context.SaveChanges();
 
-        context.Ventes.Add(new Vente { MagasinId = 1, Total = 50 });
-        context.Ventes.Add(new Vente { MagasinId = 1, Total = 30 });
+        context.Ventes.Add(new Vente { MagasinId = magasin.Id, Total = 50 });
+        context.Ventes.Add(new Vente { MagasinId = magasin.Id, Total = 30 });
         context.SaveChanges();
 
         var service = new RapportService(context);
