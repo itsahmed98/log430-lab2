@@ -1,6 +1,8 @@
-bin/
-obj/
+**/bin/
+**/obj/
+**/TestResults/
 .vscode/
-*.user
-*.suo
-*.db
+.git/
+.gitignore
+Dockerfile
+docker-compose.yml

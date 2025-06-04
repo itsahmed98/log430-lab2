@@ -1,0 +1,73 @@
+name: .NET CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: magasin
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres" 
+          --health-interval=10s 
+          --health-timeout=5s 
+          --health-retries=5
+
+    env:
+      DB_CONNECTION: Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=magasin
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore log430-lab2.sln
+
+      - name: Build solution
+        run: dotnet build log430-lab2.sln --no-restore --configuration Release
+
+      - name: Lint (format check)
+        run: dotnet format --verify-no-changes
+
+      - name: Run tests
+        run: dotnet test magasincentral.Test/magasincentral.Test.csproj --no-build --verbosity normal
+
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: docker build -f magasincentral/Dockerfile -t log430-lab2-magasin-app .
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Tag Docker image
+        run: docker tag log430-lab2-magasin-app docker.io/${{ secrets.DOCKERHUB_USERNAME }}/log430-lab2-magasin-app:latest
+
+      - name: Push Docker image
+        run: docker push docker.io/${{ secrets.DOCKERHUB_USERNAME }}/log430-lab2-magasin-app:latest

@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: magasincentral/Dockerfile
-    container_name: log430-magasin-app
+    container_name: log430-lab2-magasin-app
     ports:
       - "8080:80"
     environment:
@@ -16,7 +16,7 @@ services:
 
   magasin-db:
     image: postgres:16
-    container_name: log430-magasin-db
+    container_name: log430-lab2-magasin-db
     restart: always
     environment:
       POSTGRES_USER: postgres
