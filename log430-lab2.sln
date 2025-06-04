@@ -1,8 +1,10 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagasinMVC", "MagasinMVC.csproj", "{5EA4C1D4-E2DD-5504-BACD-6738EBF46EBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagasinMVC.Tests", "MagasinMVC.Tests\MagasinMVC.Tests.csproj", "{6ADD84A0-9796-465F-A541-4B7A4E34CD26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,6 +16,10 @@ Global
 		{5EA4C1D4-E2DD-5504-BACD-6738EBF46EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EA4C1D4-E2DD-5504-BACD-6738EBF46EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EA4C1D4-E2DD-5504-BACD-6738EBF46EBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ADD84A0-9796-465F-A541-4B7A4E34CD26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ADD84A0-9796-465F-A541-4B7A4E34CD26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ADD84A0-9796-465F-A541-4B7A4E34CD26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ADD84A0-9796-465F-A541-4B7A4E34CD26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
