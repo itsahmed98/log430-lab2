@@ -1,0 +1,31 @@
+@model List<StockProduitMagasin>
+
+<h2>Stock par magasin</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Magasin</th>
+            <th>Produit</th>
+            <th>Quantité</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stock in Model)
+        {
+            <tr>
+                <td>@stock.Magasin.Nom</td>
+                <td>@stock.Produit.Nom</td>
+                <td>@stock.Quantite</td>
+                <td>
+                    <form asp-action="Reapprovisionner" method="post">
+                        <input type="hidden" name="produitId" value="@stock.ProduitId" />
+                        <input type="hidden" name="magasinId" value="@stock.MagasinId" />
+                        <button class="btn btn-primary" type="submit">+ 20</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -12,4 +12,6 @@ public class MagasinContext : DbContext
     public DbSet<Magasin> Magasins { get; set; }
     public DbSet<Vente> Ventes { get; set; }
     public DbSet<LigneVente> LignesVente { get; set; }
+    public DbSet<StockProduitMagasin> StocksProduitsMagasins { get; set; }
+
 }
