@@ -1,0 +1,23 @@
+@model Magasin
+
+<h2>Détails du magasin - @Model.Nom</h2>
+<p><strong>Quartier :</strong> @Model.Quartier</p>
+
+<h3>Stock local</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Quantité</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stock in Model.Stocks)
+        {
+            <tr>
+                <td>@stock.Produit.Nom</td>
+                <td>@stock.Quantite</td>
+            </tr>
+        }
+    </tbody>
+</table>

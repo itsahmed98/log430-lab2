@@ -44,17 +44,22 @@ public class VenteController : Controller
         var produit = _context.Produits.FirstOrDefault(p => p.Id == model.ProduitId);
         if (produit == null) return RedirectToAction("Create");
 
-        if (produit == null || model.Quantite > produit.QuantiteStock)
+        // Vérifie que le stock local est suffisant
+        var stockMagasin = _context.StocksProduitsMagasins
+            .FirstOrDefault(s => s.ProduitId == model.ProduitId && s.MagasinId == model.MagasinId);
+
+        if (stockMagasin == null || stockMagasin.Quantite < model.Quantite)
         {
-            ModelState.AddModelError("", "Produit invalide ou quantité insuffisante");
+            TempData["Erreur"] = "Stock insuffisant dans le magasin.";
             return RedirectToAction("Create");
         }
 
+        // Calcul du montant
         var montant = produit.Prix * model.Quantite;
 
         var vente = new Vente
         {
-            DateVente = DateTime.UtcNow,
+            DateVente = DateTime.Now,
             Total = montant,
             MagasinId = model.MagasinId,
             Lignes = new List<LigneVente>
@@ -62,16 +67,19 @@ public class VenteController : Controller
                 new LigneVente
                 {
                     ProduitId = produit.Id,
-                    Quantite = model.Quantite
+                    Quantite = model.Quantite,
+                    PrixUnitaire = produit.Prix
                 }
             }
         };
 
-        produit.QuantiteStock -= model.Quantite;
+        // Met à jour le stock
+        stockMagasin.Quantite -= model.Quantite;
 
         _context.Ventes.Add(vente);
         _context.SaveChanges();
 
         return RedirectToAction("Index", "Performance");
     }
+
 }

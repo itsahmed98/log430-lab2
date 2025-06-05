@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using magasincentral.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace magasincentral.Controllers;
 
@@ -49,6 +50,22 @@ public class MagasinController : Controller
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+        return View(magasin);
+    }
+
+    /// <summary>
+    /// Affiche les détails d'un magasin spécifique, y compris ses stocks de produits.
+    /// </summary>
+    public IActionResult Details(int id)
+    {
+        var magasin = _context.Magasins
+            .Include(m => m.Stocks)
+            .ThenInclude(s => s.Produit)
+            .FirstOrDefault(m => m.Id == id);
+
+        if (magasin == null)
+            return NotFound();
+
         return View(magasin);
     }
 }

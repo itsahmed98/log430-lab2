@@ -23,4 +23,5 @@ public class Magasin
     /// Quartier dans lequel se situe le magasin.
     /// </summary>
     public string Quartier { get; set; }
+    public List<StockProduitMagasin> Stocks { get; set; } = new();
 }

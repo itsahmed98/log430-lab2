@@ -7,16 +7,20 @@
         <tr>
             <th>Nom</th>
             <th>Quartier</th>
+            <th></th> <!-- colonne vide pour actions -->
         </tr>
     </thead>
     <tbody>
-        @foreach (var m in Model)
-        {
-            <tr>
-                <td>@m.Nom</td>
-                <td>@m.Quartier</td>
-            </tr>
-        }
+@foreach (var magasin in Model)
+{
+        <tr>
+            <td>@magasin.Nom</td>
+            <td>@magasin.Quartier</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@magasin.Id" class="btn btn-info">Détails</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
 
